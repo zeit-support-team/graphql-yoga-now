@@ -1,0 +1,26 @@
+org: coetry
+app: graphql
+service: graphql 
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  graphql:
+    handler: handler.handler
+    events:
+    - http:
+        path: /
+        method: post
+        cors: true
+  playground:
+    handler: handler.handler
+    events:
+    - http:
+        path: /
+        method: get
+        cors: true
